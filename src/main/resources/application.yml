@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+app:
+  kafka:
+    bootstrap-servers: localhost:9092
+    schema-registry-url: http://localhost:8081
+
+spring:
+  application:
+    name: fraud-detection
+  kafka:
+    bootstrap-servers: ${app.kafka.bootstrap-servers}   # used by KafkaAdmin (topic creation)
+    streams:
+      application-id: fraud-detector
+  datasource:
+    url: jdbc:h2:mem:audit;DB_CLOSE_DELAY=-1
+
+logging:
+  level:
+    root: INFO
+    org.apache.kafka: WARN
+    io.confluent: WARN
+    org.springframework.kafka: INFO

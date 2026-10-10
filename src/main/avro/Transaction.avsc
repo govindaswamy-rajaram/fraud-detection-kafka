@@ -1,0 +1,15 @@
+{
+  "namespace": "com.example.frauddetection.avro",
+  "type": "record",
+  "name": "Transaction",
+  "doc": "A card payment authorisation request.",
+  "fields": [
+    {"name": "transactionId", "type": "string"},
+    {"name": "cardId",        "type": "string", "doc": "Partition key: keeps one card's events in order"},
+    {"name": "merchant",      "type": "string"},
+    {"name": "country",       "type": "string", "doc": "ISO 3166-1 alpha-2"},
+    {"name": "amountCents",   "type": "long",   "doc": "Amount in minor units (avoids floating point money)"},
+    {"name": "currency",      "type": "string", "default": "EUR"},
+    {"name": "timestamp",     "type": "long",   "doc": "Event time, epoch millis"}
+  ]
+}

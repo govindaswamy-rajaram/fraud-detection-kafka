@@ -1,0 +1,14 @@
+{
+  "namespace": "com.example.frauddetection.avro",
+  "type": "record",
+  "name": "FraudAlert",
+  "doc": "Raised by the fraud-detector Kafka Streams topology.",
+  "fields": [
+    {"name": "alertId",  "type": "string"},
+    {"name": "cardId",   "type": "string"},
+    {"name": "rule",     "type": "string", "doc": "HIGH_AMOUNT or VELOCITY"},
+    {"name": "details",  "type": "string"},
+    {"name": "triggeringTransactionId", "type": ["null", "string"], "default": null},
+    {"name": "detectedAt", "type": "long", "doc": "epoch millis"}
+  ]
+}
